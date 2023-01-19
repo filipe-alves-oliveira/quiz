@@ -15,10 +15,10 @@ function App() {
   return (
     <div className="App">
         <h1>Quiz de Programação</h1>
-        {quizState.gameStage === "Start" && <Welcome />}
+        {quizState.gameStage === "Start" && <Welcome />} 
         {quizState.gameStage === "Playing" && <Question />}
     </div>
   )
 }
-
+//se quiz.state.gamestage = start imprimr
 export default App;
