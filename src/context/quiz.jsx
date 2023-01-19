@@ -9,7 +9,6 @@ const initialState = {
 }
 
 const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q modifica o estado do jogo 
-    console.log(state, action);
 
     switch(action.type){
         case "CHANGE_STATE":
