@@ -13,9 +13,10 @@ const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q mod
 
     switch(action.type){
         case "CHANGE_STATE":
-            console.log("caiu")
-        default:
-            return state;
+            return {
+                ...state,
+                gameStage: STAGES[1],
+            };
     }
 };
 
@@ -26,5 +27,3 @@ export const QuizProvider = ({children}) => {
 
     return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 }
-
-////33:12<<<<<<<<<<<
