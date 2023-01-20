@@ -5,7 +5,8 @@ const STAGES = ["Start", "Playing", "End"]
 
 const initialState = {
     gameStage: STAGES[0],
-    questions
+    questions,
+    currentQuestion: 0, //para saber pergunta atual, criado estado para estar mudando isso 
 }
 
 const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q modifica o estado do jogo 
@@ -14,9 +15,21 @@ const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q mod
     switch(action.type){
         case "CHANGE_STATE":
             return {
-                ...state,
+                ...state, //spread operator
                 gameStage: STAGES[1],
             };
+        
+        case "REORDER_QUESTIONS":
+            const reorderedQuestions = questions.sort(() => {
+                return Math.random() - 0.5;
+            })
+            return {
+            ...state,
+            questions: reorderedQuestions,
+            };
+
+        default:
+            return state;
     }
 };
 

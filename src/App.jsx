@@ -1,7 +1,7 @@
 //organizacao - react, components, estático
 
 import Welcome from './components/Welcome';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Question from './components/Question';
 import { QuizContext } from './context/quiz';
 
@@ -11,6 +11,9 @@ import './App.css'
 function App() {
   const [quizState, dispatch] = useContext(QuizContext); //quizState pega os valores e dispatch altera
 
+  useEffect(() => {
+    dispatch ({type: "REORDER_QUESTIONS"})//embaralhar as perguntas
+  }, [])
 
   return (
     <div className="App">
@@ -20,5 +23,5 @@ function App() {
     </div>
   )
 }
-//se quiz.state.gamestage = start imprimr
+//se quiz.state.gamestage = start imprimr welcome
 export default App;
