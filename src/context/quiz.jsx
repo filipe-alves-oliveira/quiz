@@ -21,7 +21,7 @@ const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q mod
         
         case "REORDER_QUESTIONS":
             const reorderedQuestions = questions.sort(() => {
-                return Math.random() - 0.5;
+                return Math.random() - 0.5; //embaralhar o obj
             })
             return {
             ...state,
