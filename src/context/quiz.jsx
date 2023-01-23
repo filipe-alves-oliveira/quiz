@@ -7,6 +7,7 @@ const initialState = {
     gameStage: STAGES[0],
     questions,
     currentQuestion: 0, //para saber pergunta atual, criado estado para estar mudando isso 
+    score: 0,
 }
 
 const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q modifica o estado do jogo 
@@ -34,13 +35,16 @@ const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q mod
 
             if (!questions[nextQuestion]) {
                 endGame = true
-            }
+            }  
 
             return {
                 ...state,
                 currentQuestion: nextQuestion,
                 gameStage: endGame ? STAGES[2] : state.gameStage,
             };
+
+        case "NEW_GAME":
+            return initialState;      
 
         default:
             return state;
