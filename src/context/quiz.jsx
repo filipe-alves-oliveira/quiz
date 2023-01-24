@@ -41,6 +41,7 @@ const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q mod
                 ...state,
                 currentQuestion: nextQuestion,
                 gameStage: endGame ? STAGES[2] : state.gameStage,
+                answerSelected: false,
             };
 
         case "NEW_GAME":
