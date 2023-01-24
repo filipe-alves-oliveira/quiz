@@ -8,10 +8,10 @@ const initialState = {
     questions,
     currentQuestion: 0, //para saber pergunta atual, criado estado para estar mudando isso 
     score: 0,
+    answerSelected: false, 
 }
 
 const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q modifica o estado do jogo 
-    console.log(state, action);
 
     switch(action.type){
         case "CHANGE_STATE":
@@ -44,7 +44,22 @@ const quizReducer = (state, action) => {  //altera stado q ta o jogo, acao q mod
             };
 
         case "NEW_GAME":
-            return initialState;      
+            return initialState;
+
+        case "CHECK_ANSWER":
+            if(state.answerSelected) return state;
+
+            const answer = action.payload.answer
+            const option = action .payload.option
+            let correctAnswer = 0
+
+            if ( answer === option) correctAnswer= 1;
+
+            return {
+                ...state,
+                score: state.score + correctAnswer,
+                answerSelected: option,
+            };
 
         default:
             return state;
@@ -58,3 +73,5 @@ export const QuizProvider = ({children}) => {
 
     return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 }
+
+//1:08
